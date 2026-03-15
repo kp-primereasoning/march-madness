@@ -54,6 +54,59 @@ Teams earn progressively more points per win. Prize pool is divided proportional
 
 ---
 
+## The Pot Size Uncertainty Problem
+
+This is the **central structural challenge** of Calcutta auctions — and the biggest source of over/underpaying.
+
+You are bidding a fixed dollar amount for something that pays out a *percentage of an unknown total*. Even if you know a team will win the championship, you can't know what that's worth until the very last bid is placed.
+
+### Real-Time Pot Estimation Formula
+
+Once bids start, you can estimate the final pot:
+
+```
+Estimated Pot = (Total $ spent so far) / (Sum of EV% of teams sold so far)
+```
+
+**Warning:** Early in the auction (first 10–15 teams), this estimate is highly unreliable. One massive overpay or underpay on an early team skews the entire projection.
+
+### A More Practical Real-Time Metric: Price per EV%
+
+Track this as each team sells:
+
+```
+Price per EV% = Winning bid / That team's EV%
+```
+
+If teams are selling at ~$8 per 1% of pot on average, apply that ratio to every remaining team. When a team sells way above or below that ratio, you have a signal.
+
+### Early Bidding Dynamics
+
+| Factor | Effect |
+|--------|--------|
+| Pot size unknown | Can overpay by 2x without realizing it |
+| First bids set price anchors | Subsequent same-seed teams get pegged to first sale price |
+| Prior year data is your only baseline | Use historical pot sizes to anchor your EV multiplier |
+
+### Late Bidding Dynamics
+
+| Factor | Effect |
+|--------|--------|
+| Pot well-estimated | Bids become more rational and calculable |
+| Auction fatigue | Owners with teams lose interest → prices drop → late value |
+| FOMO risk | Teamless bidders late in auction will overpay → exploit or avoid being that person |
+| Supply scarcity | Last team in a hot tier (e.g., 4th No. 1 seed) sells expensive |
+
+### Practical Approaches
+
+1. **Use prior years as your baseline** — your group's historical pot size is the best pre-auction EV multiplier
+2. **Track price-per-EV% in real time** — if early bids run hot at $12/%, adjust your ceilings upward on remaining teams
+3. **Stay patient on mid-tier seeds** — 5–9 seeds often get bought at early-inflated prices; they can be bargains late
+4. **Get on the board early** — don't be the bidder scrambling to buy any team late; you become the FOMO victim others exploit
+5. **More participants = higher pot** — if your group is larger than prior years, scale up your pot estimate accordingly
+
+---
+
 ## Expected Value (EV) Calculation
 
 The core strategy tool: **EV = Σ (probability of reaching round × payout % for that round)**
@@ -65,6 +118,8 @@ Steps:
 4. At auction, compare bids against EV — never pay more than EV unless you have strategic reasons
 
 **Example:** If a team's EV is $18.75 and bidding exceeds $40, you're paying 2x+ statistical value.
+
+**Important:** Your EV calculations are only as good as your pot size estimate. Recalculate after every 5–10 teams sell as the estimate stabilizes.
 
 ---
 
