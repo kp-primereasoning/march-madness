@@ -1,0 +1,10 @@
+node_modules/
+server/node_modules/
+client/node_modules/
+server/data/calcutta.db
+server/data/calcutta.db-shm
+server/data/calcutta.db-wal
+client/dist/
+.env
+.env.local
+*.log
